@@ -1,0 +1,180 @@
+/* CSS Reset Básico e Configurações Globais */
+* {
+  /* Remove margens e paddings padrão de todos os elementos */
+  margin: 0;
+  padding: 0;
+  /* Faz com que padding e border não aumentem o tamanho total do elemento */
+  box-sizing: border-box;
+  /* Define uma fonte padrão mais moderna para a calculadora */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  /* Usa Flexbox para centralizar o conteúdo da calculadora na página */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Altura mínima de 100% da viewport (tela) */
+  background-color: #f0f0f0; /* Cor de fundo suave para a página */
+  padding: 20px; /* Adiciona um respiro nas bordas da página */
+}
+
+/* Estilos para o container principal da calculadora */
+.calculadora-container {
+  width: 100%; /* Ocupa toda a largura disponível até o max-width */
+  max-width: 380px; /* Largura máxima da calculadora, para não ficar muito grande em telas largas */
+  background-color: #2d3436; /* Cor de fundo escura para a calculadora */
+  border-radius: 15px; /* Bordas arredondadas */
+  padding: 25px; /* Espaçamento interno */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+    /* Sombra principal */ 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra secundária mais sutil */
+  border: 1px solid #3b4144; /* Borda sutil para definir melhor o contorno */
+}
+
+/* Estilos para a área do visor */
+.visor {
+  width: 100%; /* Ocupa toda a largura do container pai */
+  background-color: #1e2224; /* Cor de fundo do visor, um pouco mais escura */
+  color: #dfe6e9; /* Cor do texto no visor */
+  text-align: right; /* Alinha o texto à direita */
+  padding: 20px 15px; /* Espaçamento interno do visor */
+  border-radius: 10px; /* Bordas arredondadas para o visor */
+  margin-bottom: 20px; /* Espaço abaixo do visor, antes dos botões */
+  min-height: 70px; /* Altura mínima para o visor */
+  display: flex; /* Usa flexbox para organizar os textos do visor */
+  flex-direction: column; /* Organiza os textos um abaixo do outro */
+  justify-content: space-around; /* Distribui espaço entre os textos */
+  word-wrap: break-word; /* Quebra palavras longas para não estourar o visor */
+  word-break: break-all; /* Permite quebrar palavras em qualquer ponto se necessário */
+}
+
+/* Estilo comum para os textos dentro do visor */
+.visor-texto {
+  min-height: 30px; /* Altura mínima para cada linha de texto */
+  line-height: 30px; /* Altura da linha para alinhamento vertical */
+}
+
+/* Estilo para o visor que mostra a operação anterior ou o histórico */
+#visor-anterior {
+  font-size: 0.9rem; /* Tamanho da fonte um pouco menor */
+  color: #b2bec3; /* Cor mais suave para o histórico */
+  opacity: 0.7; /* Leve transparência */
+}
+
+/* Estilo para o visor que mostra o número atual ou resultado */
+#visor-atual {
+  font-size: 2.2rem; /* Tamanho da fonte maior para o número principal */
+  font-weight: bold; /* Texto em negrito */
+  color: #ffffff; /* Cor branca para destaque */
+}
+
+/* Container para os botões, usando CSS Grid para layout */
+.botoes-grid {
+  display: grid;
+  /* Cria 4 colunas de tamanho igual (1fr = 1 fração do espaço disponível) */
+  grid-template-columns: repeat(4, 1fr);
+  /* Espaço entre as linhas e colunas do grid */
+  gap: 12px;
+}
+
+/* Estilo base para todos os botões */
+.botao {
+  padding: 20px; /* Espaçamento interno do botão */
+  font-size: 1.3rem; /* Tamanho da fonte dos botões */
+  font-weight: 500; /* Peso da fonte */
+  border: none; /* Remove a borda padrão */
+  border-radius: 10px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  background-color: #636e72; /* Cor de fundo padrão dos botões */
+  color: #ffffff; /* Cor do texto dos botões */
+  transition: background-color 0.2s ease, transform 0.1s ease; /* Transição suave para hover e active */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil nos botões */
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+.botao:hover {
+  background-color: #747d8c; /* Cor de fundo levemente mais clara */
+}
+
+/* Efeito ao clicar no botão */
+.botao:active {
+  background-color: #50585f; /* Cor de fundo um pouco mais escura */
+  transform: translateY(2px); /* Efeito de pressionar o botão */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Reduz a sombra ao ser pressionado */
+}
+
+/* Estilos específicos para botões de função (AC, DEL) */
+.botao.funcao {
+  background-color: #a4b0be;
+  color: #2d3436;
+}
+.botao.funcao:hover {
+  background-color: #ced6e0;
+}
+.botao.funcao:active {
+  background-color: #8c98a8;
+}
+
+/* Estilos específicos para botões de operadores (+, -, *, /, %) */
+.botao.operador {
+  background-color: #ff7f50; /* Cor laranja para operadores */
+  color: white;
+}
+.botao.operador:hover {
+  background-color: #ff9f7d;
+}
+.botao.operador:active {
+  background-color: #e67248;
+}
+
+/* Estilo para o botão '0', fazendo-o ocupar 2 colunas */
+.botao.zero {
+  grid-column: span 2; /* O botão ocupa 2 colunas do grid */
+  background-color: #636e72; /* Mantém a cor dos números */
+}
+.botao.zero:hover {
+  background-color: #747d8c;
+}
+.botao.zero:active {
+  background-color: #50585f;
+}
+
+/* Estilo para o botão de igual (=) */
+.botao.igual {
+  background-color: #2ed573; /* Cor verde para o botão de igual */
+  color: white;
+  /* Pode ser necessário ajustar se o '0' também for span 2 e estiver na mesma linha */
+}
+.botao.igual:hover {
+  background-color: #4ae085;
+}
+.botao.igual:active {
+  background-color: #29bd67;
+}
+
+/* A estrutura HTML atual com '0' span 2 e '.' e '=' lado a lado está balanceada. */
+
+/* Ajustes para responsividade se necessário (opcional para este exemplo inicial) */
+@media (max-width: 400px) {
+  .calculadora-container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .botao {
+    padding: 18px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    gap: 10px;
+  }
+  .visor {
+    padding: 15px 10px;
+    min-height: 60px;
+    margin-bottom: 15px;
+  }
+  #visor-atual {
+    font-size: 1.8rem;
+  }
+  #visor-anterior {
+    font-size: 0.8rem;
+  }
+}
